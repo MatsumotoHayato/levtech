@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
-// use Illuminate\Http\Request;
+use Illuminate\Http\Request;
 use App\Http\Requests\PostRequest;
 
 class PostController extends Controller
@@ -34,5 +34,17 @@ class PostController extends Controller
         $input = $request['post'];
         $post->fill($input)->save();
         return redirect('/posts/'. $post->id);
+    }
+
+    public function edit(Post $post)
+    {
+        return view('edit')->with(['post' => $post]);
+    }
+
+    public function update(Request $request, Post $post)
+    {
+        $input = $request['post'];
+        $post->fill($input)->save();
+        return redirect('/posts/' . $post->id);
     }
 }
