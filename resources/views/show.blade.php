@@ -7,6 +7,8 @@
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&display=swap" rel="stylesheet">
     </head>
     <body>
+        @extends('layouts.app')
+        @section('content')
         <h1>Blog Name</h1>
         <p class='edit'>[<a href="/posts/{{ $post->id }}/edit">edit</a>]</p>
         <form action='/posts/{{ $post->id }}' id='form_delete' method='post'>
@@ -30,5 +32,6 @@
                 }
             }
         </script>
+        @endsection
     </body>
 </html>
