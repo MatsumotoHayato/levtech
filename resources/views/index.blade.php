@@ -10,13 +10,14 @@
     <body>
         @extends('layouts.app')
         @section('content')
-        <p class='user_name'>{{Auth::user()->name}}</p>
+        <a href='/user'><p class='user_name'>{{Auth::user()->name}}</p></a>
         <h1>Blog Name</h1>
         <p class='create'>[<a href='/posts/create'>create</a>]</p>
         <div class='posts'>
             @foreach ($posts as $post)
                 <div class='post'>
                     <a href='/posts/{{ $post->id }}'><h2 class='title'>{{ $post->title }}</h2></a>
+                    <small>{{ $post->user->name }}</small>
                     <a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a>
                     <p class='body'>{{ $post->body }}</p>
                 </div>
